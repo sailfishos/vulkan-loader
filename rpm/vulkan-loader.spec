@@ -1,7 +1,7 @@
 # Based on Fedora packaging
 
 Name:           vulkan-loader
-Version:        1.2.183
+Version:        1.3.259
 Release:        1
 Summary:        Vulkan ICD desktop loader
 License:        ASL 2.0
