@@ -1,7 +1,7 @@
 # Based on Fedora packaging
 
 Name:           vulkan-loader
-Version:        1.3.259
+Version:        1.3.277
 Release:        1
 Summary:        Vulkan ICD desktop loader
 License:        ASL 2.0
@@ -43,16 +43,16 @@ developing applications that use %{name}.
 %autosetup -n %{name}-%{version}/%{name}
 
 %build
-%cmake . \
+%cmake \
   -GNinja \
   -DCMAKE_BUILD_TYPE=Release \
   -DBUILD_WSI_DIRECTFB_SUPPORT=OFF \
   -DBUILD_WSI_XCB_SUPPORT=OFF \
   -DBUILD_WSI_XLIB_SUPPORT=OFF
-%ninja_build
+%cmake_build
 
 %install
-%ninja_install
+%cmake_install
 
 # create the filesystem
 mkdir -p %{buildroot}%{_sysconfdir}/vulkan/{explicit,implicit}_layer.d/ \
@@ -78,3 +78,4 @@ mkdir -p %{buildroot}%{_sysconfdir}/vulkan/{explicit,implicit}_layer.d/ \
 %files devel
 %{_libdir}/pkgconfig/vulkan.pc
 %{_libdir}/*.so
+%{_libdir}/cmake/VulkanLoader
